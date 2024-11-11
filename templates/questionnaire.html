@@ -1,0 +1,161 @@
+<!-- templates/questionnaire.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Анкета оценки риска - VERA</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <!-- Подключение Font Awesome для иконок -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <a href="{{ url_for('home') }}">
+          <i class="fas fa-heartbeat"></i>
+          <span>VERA</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="form-section">
+      <div class="form-container">
+        <h2>Анкета оценки риска</h2>
+        <form id="riskForm">
+          <!-- Возраст -->
+          <div class="form-group">
+            <label for="age"><i class="fas fa-calendar-alt"></i> Возраст</label>
+            <input type="number" id="age" name="age" min="10" max="100" required>
+          </div>
+
+          <!-- Возраст при первом половом акте -->
+          <div class="form-group">
+            <label for="firstSex"><i class="fas fa-child"></i> Возраст при первом половом акте</label>
+            <input type="number" id="firstSex" name="firstSex" min="10" max="100" required>
+          </div>
+
+          <!-- Количество половых партнёров за всю жизнь -->
+          <div class="form-group">
+            <label for="numPartners"><i class="fas fa-users"></i> Количество половых партнёров за всю жизнь</label>
+            <input type="number" id="numPartners" name="numPartners" min="0" required>
+          </div>
+
+          <!-- Количество беременностей -->
+          <div class="form-group">
+            <label for="numPregnancies"><i class="fas fa-baby"></i> Количество беременностей</label>
+            <input type="number" id="numPregnancies" name="numPregnancies" min="0" required>
+          </div>
+
+          <!-- Курите ли вы? -->
+          <div class="form-group">
+            <label><i class="fas fa-smoking"></i> Вы курите или курили ли когда-нибудь?</label>
+            <div class="radio-group">
+              <input type="radio" id="smokesYes" name="smokes" value="1" required>
+              <label for="smokesYes" class="btn">Да</label>
+
+              <input type="radio" id="smokesNo" name="smokes" value="0">
+              <label for="smokesNo" class="btn">Нет</label>
+            </div>
+          </div>
+
+          <!-- Сколько лет вы курите? -->
+          <div class="form-group dynamic-field" id="smokesYearsGroup">
+            <label for="smokesYears"><i class="fas fa-calendar-alt"></i> Сколько лет вы курите/курили?</label>
+            <input type="number" id="smokesYears" name="smokesYears" min="0" value="0">
+          </div>
+
+          <!-- Сколько сигарет в день вы курите? -->
+          <div class="form-group dynamic-field" id="smokesCigarettesDayGroup">
+            <label for="smokesCigarettesDay"><i class="fas fa-smoking"></i> Сколько сигарет в день вы курите/курили?</label>
+            <input type="number" id="smokesCigarettesDay" name="smokesCigarettesDay" min="0" value="0">
+          </div>
+
+          <!-- Были ли у вас ЗППП? -->
+          <div class="form-group">
+            <label><i class="fas fa-user-shield"></i> Были ли у вас ЗППП?</label>
+            <div class="radio-group">
+              <input type="radio" id="stdsYes" name="stds" value="1" required>
+              <label for="stdsYes" class="btn">Да</label>
+
+              <input type="radio" id="stdsNo" name="stds" value="0">
+              <label for="stdsNo" class="btn">Нет</label>
+            </div>
+          </div>
+
+          <!-- Количество ЗППП -->
+          <div class="form-group dynamic-field" id="stdsNumberGroup">
+            <label for="stdsNumber"><i class="fas fa-hospital"></i> Количество ЗППП</label>
+            <input type="number" id="stdsNumber" name="stdsNumber" min="0" value="0">
+          </div>
+
+          <!-- Используете ли вы гормональные контрацептивы? -->
+          <div class="form-group">
+            <label><i class="fas fa-pills"></i> Используете ли вы гормональные контрацептивы?</label>
+            <div class="radio-group">
+              <input type="radio" id="hormonalContraceptivesYes" name="hormonalContraceptives" value="1" required>
+              <label for="hormonalContraceptivesYes" class="btn">Да</label>
+
+              <input type="radio" id="hormonalContraceptivesNo" name="hormonalContraceptives" value="0">
+              <label for="hormonalContraceptivesNo" class="btn">Нет</label>
+            </div>
+          </div>
+
+          <!-- Сколько лет вы используете гормональные контрацептивы? -->
+          <div class="form-group dynamic-field" id="hormonalContraceptivesYearsGroup">
+            <label for="hormonalContraceptivesYears"><i class="fas fa-calendar-alt"></i> Сколько лет вы используете гормональные контрацептивы?</label>
+            <input type="number" id="hormonalContraceptivesYears" name="hormonalContraceptivesYears" min="0" value="0">
+          </div>
+
+          <!-- Используете ли вы ВМС? -->
+          <div class="form-group">
+            <label><i class="fas fa-injection"></i> Используете ли вы ВМС (внутриматочные спирали)?</label>
+            <div class="radio-group">
+              <input type="radio" id="iudYes" name="iud" value="1" required>
+              <label for="iudYes" class="btn">Да</label>
+
+              <input type="radio" id="iudNo" name="iud" value="0">
+              <label for="iudNo" class="btn">Нет</label>
+            </div>
+          </div>
+
+          <!-- Сколько лет вы используете ВМС? -->
+          <div class="form-group dynamic-field" id="iudYearsGroup">
+            <label for="iudYears"><i class="fas fa-calendar-alt"></i> Сколько лет вы используете ВМС?</label>
+            <input type="number" id="iudYears" name="iudYears" min="0" value="0">
+          </div>
+
+          <!-- Кнопка отправки формы -->
+          <button type="submit" class="submit-button">Отправить</button>
+        </form>
+
+        <!-- Секция с результатом -->
+        <div id="result" class="result-section hidden">
+          <h3>Результат оценки риска</h3>
+          <p class="risk-percentage"></p>
+          <p class="risk-description">Это приблизительная оценка риска развития рака шейки матки. Пожалуйста, проконсультируйтесь с врачом для получения более точной информации и рекомендаций.</p>
+          <button id="retake" class="retake-button">Пройти тест снова</button>
+
+          <!-- Новая секция предупреждения -->
+          <div class="disclaimer">
+            <p>Результаты и обратная связь не являются медицинскими рекомендациями. Пожалуйста, обратитесь к квалифицированному медицинскому специалисту для получения профессиональной консультации.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Секция с загрузкой -->
+      <div id="loader" class="loader hidden">
+        <div class="loader-content">
+          <div class="spinner"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!-- templates/cytology_analysis.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Цитологический анализ - VERA</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <!-- Подключение Font Awesome для иконок -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <a href="{{ url_for('home') }}">
+          <i class="fas fa-heartbeat"></i>
+          <span>VERA</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="form-section">
+      <div class="form-container">
+        <h2>Цитологический анализ</h2>
+        <form id="cytologyForm" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="cellImage"><i class="fas fa-file-image"></i> Загрузите изображение клеток</label>
+            <input type="file" id="cellImage" name="cellImage" accept="image/*" required>
+          </div>
+          <button type="submit" class="submit-button">Проанализировать</button>
+        </form>
+
+        <!-- Секция с результатом анализа -->
+        <div id="result" class="result-section hidden">
+          <h3>Результат анализа</h3>
+          <p class="analysis-result"></p>
+          <button id="retake" class="retake-button">Загрузить другое изображение</button>
+        </div>
+
+        <!-- Инструкция по использованию -->
+        <div class="disclaimer">
+          <p>Загрузите изображение клеток и нажмите кнопку "Проанализировать". Результат анализа типа рака будет отображён ниже. Результаты не являются медицинскими рекомендациями. Обратитесь к специалисту для профессиональной консультации.</p>
+        </div>
+      </div>
+
+      <!-- Секция загрузки -->
+      <div id="loader" class="loader hidden">
+        <div class="loader-content">
+          <div class="spinner"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='cytology.js') }}"></script>
+</body>
+</html>

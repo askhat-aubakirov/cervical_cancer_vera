@@ -1,0 +1,108 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VERA - Оценка Риска Рака Шейки Матки</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <!-- Подключение Font Awesome для иконок -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <a href="{{ url_for('home') }}">
+          <i class="fas fa-heartbeat"></i>
+          <span>VERA</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Герой секция -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Оценка риска</h1>
+          <p>Быстро и анонимно оцените свой риск развития рака шейки матки с помощью нашей нейронной модели.</p>
+          <a href="{{ url_for('questionnaire') }}" class="cta-button">Начать анкету</a>
+          <a href="{{ url_for('cytology_analysis') }}" class="cta-button">Цитологический анализ</a>
+        </div>
+        <div class="hero-logo">
+          <!-- Место для логотипа -->
+          <i class="fas fa-heartbeat"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- Информация о раке шейки матки -->
+    <section class="cervical-cancer-info">
+      <h2>Полезная информация</h2>
+      <div class="info-container">
+        <div class="info-block">
+          <i class="fas fa-info-circle fa-3x info-icon"></i>
+          <h3>Что это такое?</h3>
+          <p>Рак шейки матки — злокачественное новообразование, развивающееся в области шейки матки. Основной причиной является инфекция ВПЧ.</p>
+        </div>
+        <div class="info-block">
+          <i class="fas fa-virus fa-3x info-icon"></i>
+          <h3>Причины заболевания</h3>
+          <p>Инфекция вирусом папилломы человека (ВПЧ) является основной причиной развития рака шейки матки.</p>
+        </div>
+        <div class="info-block">
+          <i class="fas fa-user-doctor fa-3x info-icon"></i>
+          <h3>Профилактика</h3>
+          <p>Регулярные обследования и вакцинация против ВПЧ значительно снижают риск развития рака шейки матки.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section class="features">
+      <h2>Преимущества VERA</h2>
+      <div class="features-container">
+        <div class="feature-card">
+          <i class="fas fa-stethoscope fa-2x feature-icon"></i>
+          <h3>Ранняя диагностика</h3>
+          <p>Своевременное выявление риска способствует раннему лечению и повышает шансы на выздоровление.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-user-clock fa-2x feature-icon"></i>
+          <h3>Удобство использования</h3>
+          <p>Интуитивно понятный интерфейс позволяет быстро пройти анкетирование без посещения медицинских учреждений.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-shield-alt fa-2x feature-icon"></i>
+          <h3>Полная анонимность</h3>
+          <p>Ваши данные защищены и используются исключительно для оценки риска, обеспечивая конфиденциальность.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-clock fa-2x feature-icon"></i>
+          <h3>Доступность 24/7</h3>
+          <p>Сервис доступен круглосуточно, что позволяет получать результаты в любое удобное время.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- О проекте -->
+    <section class="about">
+      <h2>О VERA</h2>
+      <div class="about-content">
+        <p>VERA создан для поддержки женского здоровья и профилактики рака шейки матки. Используя современные технологии машинного обучения, мы помогаем оценить риск развития заболевания на основе индивидуальных данных.</p>
+        <p>Наш сервис повышает осведомленность о факторах риска и предоставляет персонализированные рекомендации для снижения вероятности развития рака. Мы сотрудничаем с медицинскими экспертами для обеспечения точности наших оценок.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Подвал (Footer) -->
+  <footer>
+    <div class="footer-content">
+      <p>Проект разработан командой BONFIRE LTD: Kabiden A., Sherstobitov A., Bekkozhina A., Aubakirov A.</p>
+    </div>
+  </footer>
+</body>
+</html>
